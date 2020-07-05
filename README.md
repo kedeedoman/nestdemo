@@ -28,10 +28,42 @@
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
-## Installation
+## Installation (Node + Nest)
 
 ```bash
-$ npm install
+$ sudo apt-get install curl
+$ curl -sL https://deb.nodesource.com/setup_13.x | sudo -E bash -
+$ sudo apt-get install nodejs
+# check node version
+$ node -v 
+# check npm version
+$ npm -v
+# make sure that there is .npm folder in your home directory
+  # else create one
+  $ mkdir ~/.npm
+# set npm prefix
+$ npm config set prefix '~/.npm'
+  # if it is throwing error related to permissions then do this, 
+  $ sudo chown -R $USER:$(id -gn $USER) /home/sumit/.config
+  $ npm config set prefix '~/.npm'
+# install nest cli
+$ npm i -g @nestjs/cli
+# check if it is working 
+$ nest --help
+# if it says "command not found", then
+  # add :~/.npm/bin to the enviroment file
+  # open /etc/environment with sudo
+  $ sudo gedit gedit /etc/environment
+  # append ~/.npm/bin
+  # PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:~/.npm/bin"
+  # save and exit
+  # P.S. there are other ways to add to the path variable as well, search for it. 
+  # logout and login again, or restart your machine
+  $ nest --help
+# create new project 
+$ nest new <project_name>
+
+
 ```
 
 ## Running the app
@@ -59,17 +91,3 @@ $ npm run test:e2e
 # test coverage
 $ npm run test:cov
 ```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-  Nest is [MIT licensed](LICENSE).
